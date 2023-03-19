@@ -4,7 +4,7 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
   faLinkedin,
-  faMedium,
+  faFacebook,
   faStackOverflow,
 } from "@fortawesome/free-brands-svg-icons";
 import { Box, HStack } from "@chakra-ui/react";
@@ -12,23 +12,23 @@ import { Box, HStack } from "@chakra-ui/react";
 const socials = [
   {
     icon: faEnvelope,
-    url: "mailto: hello@example.com",
+    url: "mailto:martin.yacoub.00@gmail.com",
   },
   {
     icon: faGithub,
-    url: "https://github.com",
-  },
-  {
-    icon: faLinkedin,
-    url: "https://www.linkedin.com",
-  },
-  {
-    icon: faMedium,
-    url: "https://medium.com",
+    url: "https://github.com/itsjustmartin",
   },
   {
     icon: faStackOverflow,
     url: "https://stackoverflow.com",
+  },
+  {
+    icon: faLinkedin,
+    url: "https://www.linkedin.com/in/martin-yacoub/",
+  },
+  {
+    icon: faFacebook,
+    url: "https://www.facebook.com/martinyacoub97/",
   },
 ];
 
@@ -64,7 +64,21 @@ const Header = () => {
           alignItems="center"
         >
           <nav>
-            {/* Add social media links based on the `socials` data */}
+            <nav>
+              <HStack spacing={4}>
+                {socials.map((social) => (
+                  <a
+                    key={social.url}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FontAwesomeIcon icon={social.icon} size="2x" />
+                  </a>
+                ))}
+              </HStack>
+            </nav>
+
           </nav>
           <nav>
             <HStack spacing={8}>
