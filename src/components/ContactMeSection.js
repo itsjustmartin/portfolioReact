@@ -28,12 +28,17 @@ const LandingSection = () => {
       type: "hireMe",
       comment: "",
     },
-    onSubmit: (values) => {
-      submit("/api/contact", values).then(() => {
-        onOpen("success", "Message sent!");
-        formik.resetForm();
-      });
-    },
+    onSubmit: (values, { resetForm }) => {
+      submit("/api/contact", values)
+        .then(() => {
+          onOpen("success", "Message sent!");
+          resetForm();
+        })
+        .catch(() => {
+          onOpen("error", "Error sending message. Please try again.");
+        });
+      e.preventDefault();
+    },    
     validationSchema: Yup.object({
       firstName: Yup.string().required("Required"),
       email: Yup.string()
