@@ -1,5 +1,5 @@
 import React from "react";
-import {Box, Flex} from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 
 const Footer = () => {
   const today = new Date();
@@ -22,4 +22,5 @@ const Footer = () => {
     </Box>
   );
 };
-export default Footer;
+
+export default Footer; 
