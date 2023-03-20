@@ -25,7 +25,7 @@ const projects = [
   {
     title: "Chat Bot",
     description:
-      "auto responding bot with Facebook Messnger API , bot can fetch user info and reply according to user messages",
+      "auto responding bot with Facebook Messnger API build with django backend, bot can fetch user info and reply according to user messages",
     getImageSrc: () => require("../images/messnger.jpg"),
   },
 ];
