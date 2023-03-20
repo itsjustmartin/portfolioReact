@@ -5,9 +5,9 @@ import Card from "./Card";
 
 const projects = [
   {
-    title: "React Space",
+    title: "React",
     description:
-      "Handy tool belt to create amazing AR components in a React app, with redux integration via middleware️",
+      " portfolio site is built with React and uses Chakra UI , It showcases the developer's projects, skills, and contact information in a clean and user-friendly way",
     getImageSrc: () => require("../images/photo1.jpg"),
   },
   {
