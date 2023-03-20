@@ -30,15 +30,16 @@ const LandingSection = () => {
     },
     onSubmit: (values, { resetForm }) => {
       submit("/api/contact", values)
-        .then(() => {
-          onOpen("success", "Message sent!");
+        .then((response) => {
+          const { type, message } = response;
+          onOpen(type, `Message sent! ${values.firstName}`);
           resetForm();
         })
         .catch(() => {
           onOpen("error", "Error sending message. Please try again.");
         });
       e.preventDefault();
-    },    
+    },
     validationSchema: Yup.object({
       firstName: Yup.string().required("Required"),
       email: Yup.string()
