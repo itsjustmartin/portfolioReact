@@ -39,7 +39,7 @@ const Header = () => {
 
   const handleScroll = () => {
     const currentScrollPos = window.pageYOffset;
-    setVisible((prevScrollPos > currentScrollPos || currentScrollPos < 200) && currentScrollPos > 0);
+    setVisible((prevScrollPos > currentScrollPos || currentScrollPos < 200));
     setPrevScrollPos(currentScrollPos);
   };
 
