@@ -64,9 +64,7 @@ const LandingSection = () => {
                 <FormLabel htmlFor="firstName">Name</FormLabel>
                 <Input
                   id="firstName"
-                  name="firstName"
-                  onChange={formik.handleChange}
-                  value={formik.values.firstName}
+                  {...formik.getFieldProps("firstName")}
                 />
                 <FormErrorMessage>{formik.errors.firstName}</FormErrorMessage>
               </FormControl>
@@ -74,10 +72,8 @@ const LandingSection = () => {
                 <FormLabel htmlFor="email">Email Address</FormLabel>
                 <Input
                   id="email"
-                  name="email"
                   type="email"
-                  onChange={formik.handleChange}
-                  value={formik.values.email}
+                  {...formik.getFieldProps("email")}
                 />
                 <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
               </FormControl>
@@ -100,10 +96,8 @@ const LandingSection = () => {
                 <FormLabel htmlFor="comment">Your message</FormLabel>
                 <Textarea
                   id="comment"
-                  name="comment"
                   height={250}
-                  onChange={formik.handleChange}
-                  value={formik.values.comment}
+                  {...formik.getFieldProps("comment")}
                 />
                 <FormErrorMessage>{formik.errors.comment}</FormErrorMessage>
               </FormControl>
@@ -120,7 +114,6 @@ const LandingSection = () => {
         </Box>
       </VStack>
     </FullScreenSection>
-
   );
 };
 
