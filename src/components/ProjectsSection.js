@@ -11,22 +11,22 @@ const projects = [
     getImageSrc: () => require("../images/photo1.jpg"),
   },
   {
-    title: "React Infinite Scroll",
+    title: "Django",
     description:
-      "A scrollable bottom sheet with virtualisation support, native animations at 60 FPS and fully implemented in JS land 🔥️",
-    getImageSrc: () => require("../images/photo2.jpg"),
+      "A blog site built with Django and API with REST is a web application that allows users to CRUD operations on blog posts using the Django web framework and a RESTful API. including features such as user authentication, user permissions .",
+    getImageSrc: () => require("../images/django.jpg"),
   },
   {
-    title: "Photo Gallery",
+    title: "python",
     description:
-      "A One-stop shop for photographers to share and monetize their photos, allowing them to have a second source of income",
-    getImageSrc: () => require("../images/photo3.jpg"),
+      "Python drone project aims to utilize computer vision techniques to enable a drone to detect and track objects autonomously.",
+    getImageSrc: () => require("../images/drone.jpg"),
   },
   {
-    title: "Event planner",
+    title: "Chat Bot",
     description:
-      "A mobile application for leisure seekers to discover unique events and activities in their city with a few taps",
-    getImageSrc: () => require("../images/photo4.jpg"),
+      "auto responding bot with Facebook Messnger API , bot can fetch user info and reply according to user messages",
+    getImageSrc: () => require("../images/messnger.jpg"),
   },
 ];
 
