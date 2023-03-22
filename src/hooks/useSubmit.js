@@ -14,11 +14,11 @@ const useSubmit = () => {
     setLoading(true);
     try {
       await wait(1000);
-      const response = await fetch(url, {
+      await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: data
-      })
+      }).catch(error => console.log(error));
 
       setResponse({
         type: 'success',
