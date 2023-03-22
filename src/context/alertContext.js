@@ -8,7 +8,7 @@ export const AlertProvider = ({ children }) => {
         type: 'success',
         message: '',
     });
-
+    
     return (
         <AlertContext.Provider
             value={{

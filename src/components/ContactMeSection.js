@@ -87,12 +87,12 @@ const ContactMeSection = () => {
               </FormControl>
               <FormControl>
                 <FormLabel htmlFor="type">Type of enquiry</FormLabel>
-                <Select id="type" name="type" {...formik.getFieldProps("type")}>
-                  <option value="hireMe">Freelance project proposal</option>
-                  <option value="openSource">
+                <Select id="type" name="type" {...formik.getFieldProps("type")} >
+                  <option value="hireMe"  style={{ color: 'black' }}>Freelance project proposal</option>
+                  <option value="openSource"  style={{ color: 'black' }}>
                     Open source consultancy session
                   </option>
-                  <option value="other">Other</option>
+                  <option value="other"  style={{ color: 'black' }}>Other</option>
                 </Select>
               </FormControl>
               <FormControl isInvalid={!!formik.errors.comment && formik.touched.comment}>
