@@ -65,7 +65,7 @@ const ContactMeSection = () => {
         </Heading>
         <Box p={6} rounded="md" w="100%">
           <form onSubmit={formik.handleSubmit} data-netlify="true" name="contactme">
-            {/* <input type="hidden" name='form-name' value="contactme"  data-netlify="true"/> */}
+            <input type="hidden" name='form-name' value="contactme"  data-netlify="true"/>
             <VStack spacing={4}>
               <FormControl isInvalid={!!formik.errors.firstName && formik.touched.firstName}>
                 <FormLabel htmlFor="firstName">Name</FormLabel>
