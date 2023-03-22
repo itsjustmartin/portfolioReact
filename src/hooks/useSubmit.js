@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 /** 
 * This is a custom hook that can be used to submit a form and simulate an API call 
 * It uses Math.random() to simulate a random success or failure, with 50% chance of each 
@@ -10,24 +12,28 @@ const useSubmit = () => {
 
   const submit = async (url, data) => {
     setLoading(true);
-    fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: data
-    })
-      .then(setResponse({
+    const response = await fetch(url , {
+      method: 'POST',
+      body: new URLSearchParams(data).toString(),
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+    });
+    if (response.ok) {
+      setResponse({
         type: 'success',
         message: `Thanks for your submission ${data.firstName}, we will get back to you shortly!`,
-      }))
-      .catch((e) =>  {
-      console.log(e);
+      })
+      console.log('Form submission successful');
+    } else {
       setResponse({
         type: 'error',
         message: 'Something went wrong, please try again later!',
-      })}
-      );
-
+      })
+      console.error('Form submission failed');
+    }
+  };
   return { isLoading, response, submit };
 }
-}
+
 export default useSubmit;
