@@ -32,6 +32,7 @@ const useSubmit = () => {
       })
       console.error('Form submission failed');
     }
+    setLoading(true);
   };
   return { isLoading, response, submit };
 }
