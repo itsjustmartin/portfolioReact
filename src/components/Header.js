@@ -33,24 +33,31 @@ const socials = [
 ];
 
 const Header = () => {
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
-  const [visible, setVisible] = useState(true);
   const headerRef = useRef(null);
 
-  const handleScroll = () => {
-    const currentScrollPos = window.pageYOffset;
-    setVisible((prevScrollPos > currentScrollPos || currentScrollPos < 200));
-    setPrevScrollPos(currentScrollPos);
-  };
-
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [prevScrollPos, visible, handleScroll]);
+    let prevScrollPos = window.scrollY;
 
-  const getTransformY = () => visible ? "translateY(0)" : "translateY(-200px)";
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+      const headerElement = headerRef.current;
+      if (!headerElement) {
+        return;
+      }
+      if (prevScrollPos > currentScrollPos) {
+        headerElement.style.transform = "translateY(0)";
+      } else {
+        headerElement.style.transform = "translateY(-200px)";
+      }
+      prevScrollPos = currentScrollPos;
+    }
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, []);
+
   const handleClick = (anchor) => () => {
     const id = `${anchor}-section`;
     const element = document.getElementById(id);
@@ -67,13 +74,13 @@ const Header = () => {
       top={0}
       left={0}
       right={0}
+      translateY={0}
       transitionProperty="transform"
       transitionDuration=".3s"
       transitionTimingFunction="ease-in-out"
       backgroundColor="#18181b"
-      zIndex="999"
-      transform={getTransformY()}
       ref={headerRef}
+      zIndex="999"
     >
       <Box color="white" maxWidth="1280px" margin="0 auto">
         <HStack
@@ -83,28 +90,25 @@ const Header = () => {
           alignItems="center"
         >
           <nav>
-            <nav>
-              <HStack spacing={4}>
-                {socials.map((social) => (
-                  <a
-                    key={social.url}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FontAwesomeIcon icon={social.icon} size="2x" />
-                  </a>
-                ))}
-              </HStack>
-            </nav>
-
+            <HStack spacing={8}>
+              {socials.map(({ icon, url }) => (
+                <a
+                  key={url}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FontAwesomeIcon icon={icon} size="2x" key={url} />
+                </a>
+              ))}
+            </HStack>
           </nav>
           <nav>
             <HStack spacing={8}>
-              <a href="/#projects-section" onClick={handleClick("projects")}>
+              <a href="#projects" onClick={handleClick("projects")}>
                 Projects
               </a>
-              <a href="/#contactme-section" onClick={handleClick("contactme")}>
+              <a href="#contactme" onClick={handleClick("contactme")}>
                 Contact Me
               </a>
             </HStack>
@@ -114,4 +118,5 @@ const Header = () => {
     </Box>
   );
 };
-export default Header;
+
+export default Header; 
