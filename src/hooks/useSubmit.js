@@ -10,15 +10,16 @@ const useSubmit = () => {
   const [isLoading, setLoading] = useState(false);
   const [response, setResponse] = useState(null);
 
-  const submit = async (data) => {
+  const submit = async (url ,data) => {
     setLoading(true);
+    await wait(1000);
     try {
-      const response = await fetch('/', {
+      const response = await fetch('https://martinyacoubportfolio.netlify.app/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(values)
+        body: JSON.stringify(data)
       });
       const data = await response.json();
       console.log('Form submitted successfully:', data);
