@@ -32,7 +32,7 @@ const ContactMeSection = () => {
       comment: "",
     },
     onSubmit: (values) => {
-      submit('https://john.com/contactme', values);
+      submit(values);
     },
     validationSchema: Yup.object({
       firstName: Yup.string().required("Required"),
@@ -64,7 +64,8 @@ const ContactMeSection = () => {
           Contact me
         </Heading>
         <Box p={6} rounded="md" w="100%">
-          <form onSubmit={formik.handleSubmit}>
+          <form onSubmit={formik.handleSubmit} netlify data-netlify="true">
+            <input type="hidden" name="form-name" value="contact" />
             <VStack spacing={4}>
               <FormControl isInvalid={!!formik.errors.firstName && formik.touched.firstName}>
                 <FormLabel htmlFor="firstName">Name</FormLabel>
@@ -88,11 +89,11 @@ const ContactMeSection = () => {
               <FormControl>
                 <FormLabel htmlFor="type">Type of enquiry</FormLabel>
                 <Select id="type" name="type" {...formik.getFieldProps("type")} >
-                  <option value="hireMe"  style={{ color: 'black' }}>Freelance project proposal</option>
-                  <option value="openSource"  style={{ color: 'black' }}>
+                  <option value="hireMe" style={{ color: 'black' }}>Freelance project proposal</option>
+                  <option value="openSource" style={{ color: 'black' }}>
                     Open source consultancy session
                   </option>
-                  <option value="other"  style={{ color: 'black' }}>Other</option>
+                  <option value="other" style={{ color: 'black' }}>Other</option>
                 </Select>
               </FormControl>
               <FormControl isInvalid={!!formik.errors.comment && formik.touched.comment}>

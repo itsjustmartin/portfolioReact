@@ -10,19 +10,25 @@ const useSubmit = () => {
   const [isLoading, setLoading] = useState(false);
   const [response, setResponse] = useState(null);
 
-  const submit = async (url, data) => {
-    const random = Math.random();
+  const submit = async (data) => {
     setLoading(true);
     try {
-      await wait(2000);
-      if (random < 0.5) {
-        throw new Error("Something went wrong");
-      }
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(values)
+      });
+      const data = await response.json();
+      console.log('Form submitted successfully:', data);
+      
       setResponse({
         type: 'success',
         message: `Thanks for your submission ${data.firstName}, we will get back to you shortly!`,
       })
     } catch (error) {
+      console.error('Error submitting form:', error);
       setResponse({
         type: 'error',
         message: 'Something went wrong, please try again later!',
