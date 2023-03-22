@@ -32,7 +32,7 @@ const ContactMeSection = () => {
       comment: "",
     },
     onSubmit: (values) => {
-      submit('https://martinyacoubportfolio.netlify.app/',values);
+      submit('https://martinyacoub.netlify.app/',values);
     },
     validationSchema: Yup.object({
       firstName: Yup.string().required("Required"),
