@@ -32,7 +32,7 @@ const ContactMeSection = () => {
       comment: "",
     },
     onSubmit: (values) => {
-      submit(values);
+      submit('https://martinyacoubportfolio.netlify.app/',values);
     },
     validationSchema: Yup.object({
       firstName: Yup.string().required("Required"),
@@ -64,8 +64,8 @@ const ContactMeSection = () => {
           Contact me
         </Heading>
         <Box p={6} rounded="md" w="100%">
-          <form onSubmit={formik.handleSubmit} data-netlify="true">
-            <input type="hidden" name="form-name" value="contact" />
+          <form onSubmit={formik.handleSubmit} data-netlify="true" name="contactme">
+            {/* <input type="hidden" name='form-name' value="contactme"  data-netlify="true"/> */}
             <VStack spacing={4}>
               <FormControl isInvalid={!!formik.errors.firstName && formik.touched.firstName}>
                 <FormLabel htmlFor="firstName">Name</FormLabel>

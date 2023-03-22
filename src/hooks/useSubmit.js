@@ -10,26 +10,21 @@ const useSubmit = () => {
   const [isLoading, setLoading] = useState(false);
   const [response, setResponse] = useState(null);
 
-  const submit = async (url ,data) => {
+  const submit = async (url, data) => {
     setLoading(true);
-    await wait(1000);
     try {
-      const response = await fetch('https://martinyacoubportfolio.netlify.app/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      });
-      const data = await response.json();
-      console.log('Form submitted successfully:', data);
-      
+      await wait(1000);
+      const response = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: data
+      })
+
       setResponse({
         type: 'success',
         message: `Thanks for your submission ${data.firstName}, we will get back to you shortly!`,
       })
     } catch (error) {
-      console.error('Error submitting form:', error);
       setResponse({
         type: 'error',
         message: 'Something went wrong, please try again later!',
