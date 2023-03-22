@@ -11,29 +11,27 @@ const useSubmit = () => {
   const [response, setResponse] = useState(null);
 
   const submit = async (url, data) => {
+    const random = Math.random();
     setLoading(true);
-    const response = await fetch(url , {
-      method: 'POST',
-      body: new URLSearchParams(data).toString(),
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-    });
-    if (response.ok) {
+    try {
+      await wait(2000);
+      if (random < 0.5) {
+        throw new Error("Something went wrong");
+      }
       setResponse({
         type: 'success',
         message: `Thanks for your submission ${data.firstName}, we will get back to you shortly!`,
       })
-      console.log('Form submission successful');
-    } else {
+    } catch (error) {
       setResponse({
         type: 'error',
         message: 'Something went wrong, please try again later!',
       })
-      console.error('Form submission failed');
+    } finally {
+      setLoading(false);
     }
-    setLoading(false)
   };
+
   return { isLoading, response, submit };
 }
 
