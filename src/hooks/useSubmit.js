@@ -25,14 +25,16 @@ const useSubmit = () => {
         message: `Thanks for your submission ${data.firstName}, we will get back to you shortly!`,
       })
       console.log('Form submission successful');
+      setLoading(true);
     } else {
       setResponse({
         type: 'error',
         message: 'Something went wrong, please try again later!',
       })
       console.error('Form submission failed');
+      setLoading(true);
     }
-    setLoading(true);
+    
   };
   return { isLoading, response, submit };
 }
